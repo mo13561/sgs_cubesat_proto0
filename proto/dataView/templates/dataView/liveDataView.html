@@ -4,7 +4,8 @@
     View live data
 {% endblock %}
 
-<script>
+{% block scripts %}
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
         function doSomething() {
             var d = new Date(),
@@ -14,30 +15,48 @@
             alert("Will update values here using ajax");
         }
         doSomething();
+        document.querySelectorAll(".showSectionDiv").forEach((button) => {
+            button.onclick = () => {
+                input_name = button.dataset.input;
+                document.querySelectorAll(".moreInfoDiv").forEach((div) => {
+                    div.style.display = "none";
+                    if(div.dataset.input == input_name){
+                        div.style.display = "block";
+                    }
+                });
+            };
+        });
     });
 </script>
-
-<style>
+    <style>
     .showSectionDiv{
-        border-radius:2px;
-        padding:5px;
         background-color: #311432;
         color:white;
+        border-radius:25px;
+    }
+
+    .moreInfoDiv{
+        display: none;
     }
 </style>
+{% endblock %}
+
 
 {% block body %}
     {% for input in input_array %}
         <div class="col-8">
-            <button class="showSectionDiv" data-input="{{input.name}}">{{input.name}} | {{input.value}}</button>
+            <button class="showSectionDiv btn btn-primary" data-input="{{input.name}}">{{input.name}} | {{input.value}}</button>
             <div data-input="{{input.name}}" class="moreInfoDiv">
                 <!--Insert table, analysis etc.-->
+                Name: {{input.name}}
+                Value: {{input.value}}
             </div>
         </div>
         <br/><br/>
     {% empty %}
         <h1>Something went wrong. No live info available at this time.</h1>
     {% endfor %}
+
 
 
 {% endblock %}
