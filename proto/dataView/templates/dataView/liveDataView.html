@@ -1,0 +1,43 @@
+{% extends 'dataView/layout.html' %}
+
+{% block title %}
+    View live data
+{% endblock %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        function doSomething() {
+            var d = new Date(),
+            h = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), (d.getMinutes() - (d.getMinutes() % 15)) + 15, 0, 0),
+            e = h - d;
+            window.setTimeout(doSomething, e);
+            alert("Will update values here using ajax");
+        }
+        doSomething();
+    });
+</script>
+
+<style>
+    .showSectionDiv{
+        border-radius:2px;
+        padding:5px;
+        background-color: #311432;
+        color:white;
+    }
+</style>
+
+{% block body %}
+    {% for input in input_array %}
+        <div class="col-8">
+            <button class="showSectionDiv" data-input="{{input.name}}">{{input.name}} | {{input.value}}</button>
+            <div data-input="{{input.name}}" class="moreInfoDiv">
+                <!--Insert table, analysis etc.-->
+            </div>
+        </div>
+        <br/><br/>
+    {% empty %}
+        <h1>Something went wrong. No live info available at this time.</h1>
+    {% endfor %}
+
+
+{% endblock %}
