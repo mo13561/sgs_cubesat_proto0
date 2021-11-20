@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block scripts %}
-    <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
         function doSomething() {
             var d = new Date(),
@@ -43,7 +43,7 @@
 
 
 {% block body %}
-    <p>https://help.tableau.com/current/pro/desktop/en-us/embed.htm - keep tables?</p>
+    <p>https://help.tableau.com/current/pro/desktop/en-us/embed.htm - keep tables?<br/>Nvm use react js instead - requires JSON setup</p>
     {% for input in input_array %}
         <div class="col-8">
             <button class="showSectionDiv btn btn-primary" data-input="{{input.name}}">{{input.name}} | {{input.value}}</button>
