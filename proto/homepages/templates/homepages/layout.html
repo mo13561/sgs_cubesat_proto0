@@ -12,16 +12,18 @@
     {% block scripts %} {% endblock %}
 </head>
 <body>
-    <div class="header col-12" style="background-color:#D3D3D3;padding:20px">
-        <!--insert links here, not editable section on other html-->
-    </div>
-    <div style="margin-bottom:30px">
-        <!--add content here-->
-        {% block body %}
-        {% endblock %}
-    </div>
-    <div class="footer col-12" style="height:30px; background-color:#D3D3D3; display: flex; justify-content: center; align-items: center;position: absolute;bottom: 0;">
-        © SGS Cubesat (name pending) 2021
+    <div style="height:100%">
+        <div class="header col-12" style="background-color:#D3D3D3;padding:20px">
+            <!--insert links here, not editable section on other html-->
+        </div>
+        <div style="margin-bottom:30px;">
+            <!--add content here-->
+            {% block body %}
+            {% endblock %}
+        </div>
+        <div class="footer col-12" style="height:30px; background-color:#D3D3D3; display: flex; justify-content: center; align-items: center;position: absolute;bottom: 0;">
+            © SGS Cubesat (name pending) 2021
+        </div>
     </div>
 </body>
 </html>
